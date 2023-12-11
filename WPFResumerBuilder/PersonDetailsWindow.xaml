@@ -1,0 +1,42 @@
+﻿<Window x:Class="WPFUsersSQLite.PersonDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFUsersSQLite"
+        mc:Ignorable="d"
+        Title="PersonDetailsWindow" Height="450" Width="400">
+    <Grid>
+        <StackPanel Margin="10">
+            <Label Content="Person Details Window" 
+            Style="{StaticResource TitleLabelStyle}"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="First Name: "/>
+                <TextBlock x:Name="firstNameTextBox"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Last Name: "/>
+                <TextBlock x:Name="lastNameTextBox"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="City: "/>
+                <TextBlock x:Name="cityTextBox"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Age: "/>
+                <TextBlock x:Name="ageTextBox"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+            <Button x:Name="UpdateBTN"
+             Click="UpdateBTN_Click">
+                Update
+            </Button>
+            <Button x:Name="DeleteBTN"
+             Click="DeleteBTN_Click">
+                Delete
+            </Button>
+                </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
