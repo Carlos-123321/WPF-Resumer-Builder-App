@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WPFUsersSQLite
+namespace WPFResumeBuilder
 {
     /// <summary>
     /// Interaction logic for AddPersonWindow.xaml
@@ -26,16 +26,34 @@ namespace WPFUsersSQLite
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            Person newPerson = new Person();
-            newPerson.FirstName = firstNameTextBox.Text;
-            newPerson.LastName = lastNameTextBox.Text;
-            newPerson.City = cityTextBox.Text;
-            newPerson.Age = Convert.ToInt32(ageTextBox.Text);
 
-            PersonDBHandler db = PersonDBHandler.Instance;
-            db.AddPerson(newPerson);
-            Close();
+            if (string.IsNullOrWhiteSpace(ageTextBox.Text) || ageTextBox.Text.Any(char.IsLetter))
+            {
 
+                MessageBox.Show("Please enter a valid age");
+
+
+            }
+
+            else
+            {
+
+                Person newPerson = new Person();
+                newPerson.FirstName = firstNameTextBox.Text;
+                newPerson.LastName = lastNameTextBox.Text;
+                newPerson.Title = titleTextBox.Text;
+                newPerson.City = cityTextBox.Text;
+                newPerson.Age = Convert.ToInt32(ageTextBox.Text);
+                newPerson.PhoneNumber = phoneNumberTextBox.Text;
+                newPerson.Address = addressTextBox.Text;
+                newPerson.Languages = languagesTextBox.Text;
+                newPerson.Email = emailTextBox.Text;
+                newPerson.Education = educationTextBox.Text;
+
+                PersonDBHandler db = PersonDBHandler.Instance;
+                db.AddPerson(newPerson);
+                Close();
+            }
 
         }
     }

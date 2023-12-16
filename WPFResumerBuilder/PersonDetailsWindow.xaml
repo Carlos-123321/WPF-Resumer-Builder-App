@@ -1,42 +1,85 @@
-﻿<Window x:Class="WPFUsersSQLite.PersonDetailsWindow"
+﻿<Window x:Class="WPFResumeBuilder.PersonDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFUsersSQLite"
+        xmlns:local="clr-namespace:WPFResumeBuilder"
         mc:Ignorable="d"
-        Title="PersonDetailsWindow" Height="450" Width="400">
-    <Grid>
-        <StackPanel Margin="10">
-            <Label Content="Person Details Window" 
+        Title="PersonDetailsWindow" Height="700" Width="450">
+    <Grid Background="WhiteSmoke">
+        <Border Margin="10">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="IndianRed" Offset="0"/>
+                    <GradientStop Color="Wheat" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        <StackPanel Margin="20">
+            <Label Content="Person Details" 
             Style="{StaticResource TitleLabelStyle}"/>
             <StackPanel Orientation="Horizontal">
                 <Label Content="First Name: "/>
-                <TextBlock x:Name="firstNameTextBox"/>
+                    <TextBlock x:Name="firstNameTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Last Name: "/>
-                <TextBlock x:Name="lastNameTextBox"/>
+                    <TextBlock x:Name="lastNameTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Title: "/>
+                    <TextBlock x:Name="titleTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="City: "/>
-                <TextBlock x:Name="cityTextBox"/>
+                    <TextBlock x:Name="cityTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Age: "/>
-                <TextBlock x:Name="ageTextBox"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-            <Button x:Name="UpdateBTN"
-             Click="UpdateBTN_Click">
-                Update
-            </Button>
-            <Button x:Name="DeleteBTN"
-             Click="DeleteBTN_Click">
-                Delete
-            </Button>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Age: "/>
+                    <TextBlock x:Name="ageTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="PhoneNumber: " Width="161"/>
+                    <TextBlock x:Name="phoneNumberTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Address: "/>
+                    <TextBlock x:Name="addressTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Languages: "/>
+                    <TextBlock x:Name="languagesTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Email: "/>
+                    <TextBlock x:Name="emailTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Education: "/>
+                    <TextBlock x:Name="educationTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="UpdateBTN"
+             Click="UpdateBTN_Click">
+                    Edit
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="DeleteBTN"
+             Click="DeleteBTN_Click">
+                    Delete
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="ShowResume"
+             Click="ShowResume_Click">
+                    Create Resume
+                </Button>
+
+            </StackPanel>
+            
         </StackPanel>
+        </Border>
     </Grid>
 </Window>

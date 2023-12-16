@@ -1,11 +1,11 @@
-﻿<Window x:Class="WPFResumeBuilder.AddPersonWindow"
+﻿<Window x:Class="WPFResumeBuilder.UpdatePersonWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFResumeBuilder"
         mc:Ignorable="d"
-        Title="AddPersonWindow" Height="700" Width="400">
+        Title="UpdatePersonWindow" Height="700" Width="450">
     <Grid Background="WhiteSmoke">
         <Border Margin="10">
             <Border.Background>
@@ -15,53 +15,56 @@
                 </LinearGradientBrush>
             </Border.Background>
             <StackPanel Margin="20">
-                <Label Content="Add Person Window" 
+        
+                <Label Content="Update Person" 
                    Style="{StaticResource TitleLabelStyle}"/>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="First Name: "/>
-                    <TextBox x:Name="firstNameTextBox" Width="Auto" Background="Transparent" FontSize="20" Foreground="Black" FontFamily="Georgia">John</TextBox>
+                    <TextBox x:Name="firstNameTextBox" Background="Transparent" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
+
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Last Name: "/>
-                    <TextBox x:Name="lastNameTextBox" Width="Auto" Background="Transparent" FontSize="20" Foreground="Black" FontFamily="Georgia">Doe</TextBox>
+                    <TextBox x:Name="lastNameTextBox" Background="Transparent" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Title: "/>
-                    <TextBox x:Name="titleTextBox" Width="Auto" Background="Transparent" FontSize="20" Foreground="Black" FontFamily="Georgia">Software Engineer</TextBox>
+                    <TextBox x:Name="titleTextBox" Background="Transparent" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="City: "/>
-                    <TextBox x:Name="cityTextBox" Width="Auto" Background="Transparent" FontSize="20" Foreground="Black" FontFamily="Georgia">New York</TextBox>
+                    <TextBox x:Name="cityTextBox" Background="Transparent" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Age: "/>
-                    <TextBox x:Name="ageTextBox" Width="Auto" Background="Transparent" FontSize="20" Foreground="Black" FontFamily="Georgia">30</TextBox>
+                    <TextBox x:Name="ageTextBox" Background="Transparent" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="PhoneNumber: " Width="153"/>
-                    <TextBox x:Name="phoneNumberTextBox" Width="Auto" FontSize="20" Foreground="Black" FontFamily="Georgia">513-345-6789</TextBox>
+                    <Label Content="PhoneNumber: " Width="161"/>
+                    <TextBox x:Name="phoneNumberTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Address: "/>
-                    <TextBox x:Name="addressTextBox" Width="Auto" FontSize="20" Foreground="Black" FontFamily="Georgia">123 Rue Champlain</TextBox>
+                    <TextBox x:Name="addressTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Languages: "/>
-                    <TextBox x:Name="languagesTextBox" Width="Auto" FontSize="20" Foreground="Black" FontFamily="Georgia">French, English</TextBox>
+                    <TextBox x:Name="languagesTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Email: "/>
-                    <TextBox x:Name="emailTextBox" Width="Auto" FontSize="20" Foreground="Black" FontFamily="Georgia">John.doe@example.com</TextBox>
+                    <TextBox x:Name="emailTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Education: "/>
-                    <TextBox x:Name="educationTextBox" Width="Auto" FontSize="20" Foreground="Black" FontFamily="Georgia">Bachelor's in Computer Science</TextBox>
+                    <TextBox x:Name="educationTextBox" FontSize="20" Foreground="Black" FontFamily="Georgia"/>
                 </StackPanel>
-                <Button x:Name="SubmitButton"
-                    Click="SubmitButton_Click">
-                    Submit
+                <Button x:Name="SaveButton"
+                    Click="SaveButton_Click">
+                    Save
                 </Button>
             </StackPanel>
         </Border>
     </Grid>
 </Window>
+

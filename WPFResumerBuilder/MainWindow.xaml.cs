@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPFUsersSQLite
+namespace WPFResumeBuilder
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -37,21 +37,33 @@ namespace WPFUsersSQLite
             AllPeopleDataGrid.ItemsSource = people;
         }
 
-       
 
+        private bool selectionHandler = false;
         private void AllPeopleDataGrid_SelectionChanged(object sender, 
             SelectionChangedEventArgs e)
         {
-            Person person = (Person)AllPeopleDataGrid.SelectedItem;
 
-            if (person != null)
-            { 
-                PersonDetailsWindow personDetailsWindow = new PersonDetailsWindow(person);
-                personDetailsWindow.ShowDialog();
-                RefreshAllPeopleList();
+            if (!selectionHandler)
+            {
+                selectionHandler = true;
+
+                if (AllPeopleDataGrid.SelectedItem is Person selectedPerson)
+                {
+
+                    PersonDetailsWindow personDetailsWindow = new PersonDetailsWindow(selectedPerson);
+                    personDetailsWindow.ShowDialog();
+                    RefreshAllPeopleList();
+                }
+                else
+                {
+                    AddPersonWindow addPersonWindow = new AddPersonWindow();
+                    addPersonWindow.ShowDialog();
+                    RefreshAllPeopleList();
+                }
+                selectionHandler = false;
             }
-
         }
+
 
 
         private void AddPersonButton_Click(object sender, RoutedEventArgs e)
@@ -61,5 +73,8 @@ namespace WPFUsersSQLite
             RefreshAllPeopleList();
 
         }
+
+       
+
     }
 }

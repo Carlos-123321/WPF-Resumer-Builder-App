@@ -7,7 +7,7 @@ using System.Data.SQLite;
 using System.Configuration;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 
-namespace WPFUsersSQLite
+namespace WPFResumeBuilder
 {
     class PersonDBHandler
     {
@@ -39,8 +39,8 @@ namespace WPFUsersSQLite
                     SQLiteCommand command1 = new SQLiteCommand(drop, con);
                     command1.ExecuteNonQuery();
 
-                    string table = "create table Persons  (ID integer primary key, FirstName text, LastName text, City text, Age integer);";
-                    SQLiteCommand command2 = new SQLiteCommand(table, con);
+                string table = "create table Persons (ID integer primary key, FirstName text, LastName text, Title text, City text, Age integer, PhoneNumber text, Address text, Languages text, Email text, Education text);";
+                SQLiteCommand command2 = new SQLiteCommand(table, con);
                     command2.ExecuteNonQuery();
 
                 }
@@ -59,19 +59,25 @@ namespace WPFUsersSQLite
 
                     con.Open();
 
-                    //create parameterized query
-                    string query = "INSERT INTO Persons (FirstName, LastName, City, Age) VALUES (@FirstName, @LastName, @City, @Age)";
+                //create parameterized query
+                string query = "INSERT INTO Persons (FirstName, LastName, Title, City, Age, PhoneNumber, Address, Languages, Email, Education) VALUES (@FirstName, @LastName, @Title, @City, @Age, @PhoneNumber, @Address, @Languages, @Email, @Education)";
 
-                    SQLiteCommand insertcom = new SQLiteCommand(query, con);
+                SQLiteCommand insertcom = new SQLiteCommand(query, con);
 
                     //Pass values to the query parameters
                     insertcom.Parameters.AddWithValue("@FirstName", person.FirstName);
                     insertcom.Parameters.AddWithValue("@LastName", person.LastName);
+                    insertcom.Parameters.AddWithValue("@Title", person.Title);
                     insertcom.Parameters.AddWithValue("@City", person.City);
                     insertcom.Parameters.AddWithValue("@Age", person.Age);
+                    insertcom.Parameters.AddWithValue("@PhoneNumber", person.PhoneNumber);
+                    insertcom.Parameters.AddWithValue("@Address", person.Address);
+                    insertcom.Parameters.AddWithValue("@Languages", person.Languages);
+                    insertcom.Parameters.AddWithValue("@Email", person.Email);
+                    insertcom.Parameters.AddWithValue("@Education", person.Education);
 
 
-                    try
+                try
                     {
 
                         rows = insertcom.ExecuteNonQuery();
@@ -123,6 +129,7 @@ namespace WPFUsersSQLite
 
                             person.FirstName = reader["FirstName"].ToString();
                             person.LastName = reader["LastName"].ToString();
+                            person.Title = reader["Title"].ToString();
                             person.City = reader["City"].ToString();
 
                             if (Int32.TryParse(reader["Age"].ToString(), out int age))
@@ -130,20 +137,17 @@ namespace WPFUsersSQLite
                                 person.Age = age;
                             }
 
-
-                        }
-
+                            person.PhoneNumber = reader["PhoneNumber"].ToString();
+                            person.Address = reader["Address"].ToString();
+                            person.Languages = reader["Languages"].ToString();
+                            person.Email = reader["Email"].ToString();
+                            person.Education = reader["Education"].ToString();
+                    }
                     }
 
                     return person;
 
                 }
-
-
-
-
-
-
             }
 
 
@@ -157,16 +161,22 @@ namespace WPFUsersSQLite
 
                     con.Open();
 
-                    string query = "UPDATE Persons SET FirstName = @FirstName, LastName = @LastName, City = @City, Age = @Age WHERE Id = @Id";
+                string query = "UPDATE Persons SET FirstName = @FirstName, LastName = @LastName, Title = @Title, City = @City, Age = @Age, PhoneNumber = @PhoneNumber, Address = @Address, Languages = @Languages, Email = @Email, Education = @Education WHERE Id = @Id";
 
-                    SQLiteCommand updatecom = new SQLiteCommand(@query, con);
+                SQLiteCommand updatecom = new SQLiteCommand(@query, con);
                     updatecom.Parameters.AddWithValue("@Id", person.Id);
                     updatecom.Parameters.AddWithValue("@FirstName", person.FirstName);
                     updatecom.Parameters.AddWithValue("@LastName", person.LastName);
+                    updatecom.Parameters.AddWithValue("@Title", person.Title);
                     updatecom.Parameters.AddWithValue("@City", person.City);
                     updatecom.Parameters.AddWithValue("@Age", person.Age);
+                    updatecom.Parameters.AddWithValue("@PhoneNumber", person.PhoneNumber);
+                    updatecom.Parameters.AddWithValue("@Address", person.Address);
+                    updatecom.Parameters.AddWithValue("@Languages", person.Languages);
+                    updatecom.Parameters.AddWithValue("@Email", person.Email);
+                    updatecom.Parameters.AddWithValue("@Education", person.Education);
 
-                    try
+                try
                     {
                         row = updatecom.ExecuteNonQuery();
                     }
@@ -240,13 +250,20 @@ namespace WPFUsersSQLite
 
                             person.FirstName = reader["FirstName"].ToString();
                             person.LastName = reader["LastName"].ToString();
+                            person.Title = reader["Title"].ToString();
                             person.City = reader["City"].ToString();
 
                             if (Int32.TryParse(reader["Age"].ToString(), out int age))
                             {
                                 person.Age = age;
                             }
-                            listPersons.Add(person);
+                            person.PhoneNumber = reader["PhoneNumber"].ToString();
+                            person.Address = reader["Address"].ToString();
+                            person.Languages = reader["Languages"].ToString();
+                            person.Email = reader["Email"].ToString();
+                            person.Education = reader["Education"].ToString();
+
+                        listPersons.Add(person);
                         }
                     }
                 }

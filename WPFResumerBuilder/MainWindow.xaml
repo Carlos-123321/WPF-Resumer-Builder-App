@@ -1,33 +1,39 @@
-﻿<Window x:Class="WPFUsersSQLite.MainWindow"
+﻿<Window x:Class="WPFResumeBuilder.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPFUsersSQLite"
+        xmlns:local="clr-namespace:WPFResumeBuilder"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="600">
 
     <Window.Resources>
         <Style TargetType="DataGrid">
-            <Setter Property="Height" Value="200"/>
-            <Setter Property="Width" Value="200"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="AutoGenerateColumns" Value="True"/>
             <Setter Property="SelectionMode" Value="Single"/>
-            
         </Style>
+
+        
     </Window.Resources>
     <DockPanel>
-        <Label DockPanel.Dock="Top" Content="My Rolodex"
+        <DockPanel.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                <GradientStop Color="BlanchedAlmond" Offset="0"/>
+                <GradientStop Color="IndianRed" Offset="1"/>
+            </LinearGradientBrush>
+        </DockPanel.Background>
+        <Label DockPanel.Dock="Top" Content="Resume Builder"
         Style="{StaticResource TitleLabelStyle}"/>
 
         <Button DockPanel.Dock="Bottom" x:Name="AddPersonButton" 
                 Click="AddPersonButton_Click">
             Add Person
         </Button>
-
+       
         <DataGrid x:Name="AllPeopleDataGrid" 
-                  SelectionChanged="AllPeopleDataGrid_SelectionChanged"/>
+                  SelectionChanged="AllPeopleDataGrid_SelectionChanged"
+                  HorizontalAlignment="Center"/>
     </DockPanel>
 </Window>
